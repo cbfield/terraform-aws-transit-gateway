@@ -28,6 +28,16 @@ output "tags" {
   value       = var.tags
 }
 
+output "vpc_attachments" {
+  description = "VPC attachments created through this module"
+  value       = aws_ec2_transit_gateway_vpc_attachment.vpc_attachment
+}
+
+output "vpc_attachment_accepters" {
+  description = "VPC attachment accepters created through this module"
+  value       = aws_ec2_transit_gateway_vpc_attachment_accepter.vpc_attachment_accepter
+}
+
 output "vpn_ecmp_support" {
   description = "The provided value for var.vpn_ecmp_support"
   value       = var.vpn_ecmp_support

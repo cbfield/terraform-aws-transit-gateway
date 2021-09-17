@@ -33,6 +33,25 @@ variable "tags" {
   default     = {}
 }
 
+variable "vpc_attachments" {
+  description = "Attachments of this transit gateway to VPCs. Each attachment requires a VPC ID and subnet IDs"
+  type = list(object({
+    subnets = list(string)
+    vpc_id  = string
+    tags    = map(string)
+  }))
+  default = []
+}
+
+variable "vpc_attachment_accepters" {
+  description = "Accepters for VPC attachments to this transit gateway"
+  type = list(object({
+    transit_gateway_attachment_id = string
+    tags                          = map(string)
+  }))
+  default = []
+}
+
 variable "vpn_ecmp_support" {
   description = "Enable VPN Equal Cost Multipath Protocol support"
   type        = string
