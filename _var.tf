@@ -27,6 +27,27 @@ variable "dns_support" {
   default     = "enable"
 }
 
+variable "peering_attachment_accepters" {
+  description = "Accepters for peering attachments from other transit gateways"
+  type = list(object({
+    routed_cidrs                  = list(string)
+    transit_gateway_attachment_id = string
+    tags                          = map(string)
+  }))
+  default = []
+}
+
+variable "peering_attachments" {
+  description = "Attachments from this transit gateway to others"
+  type = list(object({
+    peer_transit_gateway_id = string
+    region                  = string
+    routed_cidrs            = list(string)
+    tags                    = map(string)
+  }))
+  default = []
+}
+
 variable "tags" {
   description = "Tags to assign to the transit gateway"
   type        = map(string)
