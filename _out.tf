@@ -13,6 +13,11 @@ output "auto_accept_shared_attachments" {
   value       = var.auto_accept_shared_attachments
 }
 
+output "aws_caller_id" {
+  description = "The AWS caller identity used to invoke this module"
+  value       = data.aws_caller_identity.current
+}
+
 output "default_route_table_association" {
   description = "The provided value for var.default_route_table_association"
   value       = var.default_route_table_association

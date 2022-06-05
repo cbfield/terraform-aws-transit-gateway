@@ -8,7 +8,7 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "attachment" {
   vpc_id                 = each.key
 
   tags = merge(each.value.tags, {
-    "Managed By Terraform" = ""
+    "Managed By Terraform" = "true"
   })
 }
 
@@ -18,6 +18,6 @@ resource "aws_ec2_transit_gateway_vpc_attachment_accepter" "accepter" {
   transit_gateway_attachment_id = each.key
 
   tags = merge(each.value.tags, {
-    "Managed By Terraform" = ""
+    "Managed By Terraform" = "true"
   })
 }

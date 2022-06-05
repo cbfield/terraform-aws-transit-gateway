@@ -30,9 +30,9 @@ variable "dns_support" {
 variable "peering_attachment_accepters" {
   description = "Accepters for peering attachments from other transit gateways"
   type = list(object({
-    routed_cidrs                  = list(string)
-    transit_gateway_attachment_id = string
-    tags                          = map(string)
+    routed_cidrs  = list(string)
+    attachment_id = string
+    tags          = map(string)
   }))
   default = []
 }
@@ -40,10 +40,11 @@ variable "peering_attachment_accepters" {
 variable "peering_attachments" {
   description = "Attachments from this transit gateway to others"
   type = list(object({
-    peer_transit_gateway_id = string
-    region                  = string
-    routed_cidrs            = list(string)
-    tags                    = map(string)
+    account_id   = string
+    tgw_id       = string
+    region       = string
+    routed_cidrs = list(string)
+    tags         = map(string)
   }))
   default = []
 }
@@ -67,8 +68,8 @@ variable "vpc_attachments" {
 variable "vpc_attachment_accepters" {
   description = "Accepters for VPC attachments to this transit gateway"
   type = list(object({
-    transit_gateway_attachment_id = string
-    tags                          = map(string)
+    attachment_id = string
+    tags          = map(string)
   }))
   default = []
 }

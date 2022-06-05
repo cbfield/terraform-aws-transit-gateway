@@ -6,6 +6,6 @@ resource "aws_ec2_transit_gateway" "tgw" {
   vpn_ecmp_support                = var.vpn_ecmp_support
 
   tags = merge(var.tags, {
-    "Managed By Terraform" = ""
+    "Managed By Terraform" = "true"
   })
 }
